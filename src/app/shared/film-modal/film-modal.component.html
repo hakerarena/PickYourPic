@@ -1,0 +1,27 @@
+<div class="film-modal__backdrop" (click)="onBackdropClick($event)" role="dialog" aria-modal="true" [attr.aria-label]="film.title + ' wedding film'">
+  <div class="film-modal__container">
+    <div class="film-modal__header">
+      <div class="film-modal__meta">
+        <h2 class="film-modal__title">{{ film.title }}</h2>
+        <p class="film-modal__sub">{{ film.coupleNames }} &middot; {{ film.location }}</p>
+      </div>
+      <button class="film-modal__close" (click)="close()" aria-label="Close film">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="film-modal__video-wrap">
+      <iframe
+        [src]="embedUrl"
+        title="{{ film.title }}"
+        frameborder="0"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen
+        class="film-modal__iframe"
+      ></iframe>
+    </div>
+  </div>
+</div>

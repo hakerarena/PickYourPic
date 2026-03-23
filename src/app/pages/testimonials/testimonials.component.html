@@ -1,0 +1,32 @@
+<section class="page-hero">
+  <div class="page-hero__content" appScrollReveal>
+    <p class="section-label">Testimonials</p>
+    <h1>Words from the hearts we've touched</h1>
+    <p>The highest compliment a couple can give us is letting us be part of their story.</p>
+  </div>
+</section>
+
+<section class="testimonials-page">
+  <div class="testimonials-grid">
+    @for (t of testimonials; track t.id; let i = $index) {
+      <article class="testimonial-card" appScrollReveal [revealDelay]="(i % 2) * 100">
+        <div class="testimonial-card__top">
+          <div class="testimonial-card__avatar">{{ t.avatarInitials }}</div>
+          <div class="testimonial-card__meta">
+            <strong class="testimonial-card__name">{{ t.coupleName }}</strong>
+            <span class="testimonial-card__location">{{ t.location }}</span>
+            <span class="testimonial-card__date">{{ t.weddingDate }}</span>
+          </div>
+        </div>
+        <div class="testimonial-card__stars">
+          @for (s of [1,2,3,4,5]; track s) {
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)" stroke="none">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          }
+        </div>
+        <blockquote class="testimonial-card__quote">"{{ t.quote }}"</blockquote>
+      </article>
+    }
+  </div>
+</section>

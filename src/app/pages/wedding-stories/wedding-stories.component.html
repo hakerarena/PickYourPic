@@ -1,0 +1,61 @@
+<section class="page-hero">
+  <div class="page-hero__content" appScrollReveal>
+    <p class="section-label">Wedding Stories</p>
+    <h1>Every wedding, a unique story</h1>
+    <p>Browse our portfolio of love stories documented across India and beyond.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="stories-gallery">
+  <div class="masonry-grid">
+    @for (img of galleryImages; track img.url; let i = $index) {
+      <div class="masonry-item card-hover" (click)="openLightbox(i)">
+        <img [src]="img.url" [alt]="img.alt" loading="lazy" />
+        <div class="img-overlay">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- BLOG POSTS -->
+<section class="stories-posts">
+  <div class="stories-posts__header" appScrollReveal>
+    <p class="section-label">Featured Stories</p>
+    <h2>Behind the images</h2>
+  </div>
+
+  <div class="filter-tabs">
+    @for (cat of categories; track cat) {
+      <button
+        class="filter-btn"
+        [class.active]="activeCategory() === cat"
+        (click)="setCategory(cat)"
+      >{{ cat }}</button>
+    }
+  </div>
+
+  <div class="posts-grid">
+    @for (post of filteredPosts(); track post.id; let i = $index) {
+      <article class="post-card card-hover" appScrollReveal [revealDelay]="(i % 3) * 80">
+        <div class="post-card__thumb">
+          <img [src]="post.thumbnailUrl" [alt]="post.title" loading="lazy" />
+          <span class="post-card__cat badge">{{ post.category }}</span>
+        </div>
+        <div class="post-card__body">
+          <h3 class="post-card__title">{{ post.title }}</h3>
+          <p class="post-card__excerpt">{{ post.excerpt }}</p>
+          <time class="post-card__date">{{ post.date | date:'MMMM y' }}</time>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+@if (lightboxOpen()) {
+  <app-lightbox [images]="galleryImages" [startIndex]="lightboxIndex()" (closed)="closeLightbox()" />
+}

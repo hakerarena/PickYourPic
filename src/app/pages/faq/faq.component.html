@@ -1,0 +1,37 @@
+<section class="page-hero">
+  <div class="page-hero__content" appScrollReveal>
+    <p class="section-label">FAQ</p>
+    <h1>Everything you need to know</h1>
+    <p>Can't find your answer? Just reach out — we're always happy to chat.</p>
+  </div>
+</section>
+
+<section class="faq-page">
+  <div class="filter-tabs">
+    @for (cat of categories; track cat) {
+      <button
+        class="filter-btn"
+        [class.active]="activeCategory() === cat"
+        (click)="setCategory(cat)"
+      >{{ cat }}</button>
+    }
+  </div>
+
+  <div class="faq-list">
+    @for (item of filteredItems; track item.id) {
+      <div class="faq-item" [class.open]="openId() === item.id" appScrollReveal>
+        <button class="faq-item__q" (click)="toggle(item.id)" [attr.aria-expanded]="openId() === item.id">
+          <span>{{ item.question }}</span>
+          <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        @if (openId() === item.id) {
+          <div class="faq-item__a">
+            <p>{{ item.answer }}</p>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</section>

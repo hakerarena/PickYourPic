@@ -1,0 +1,57 @@
+<section class="page-hero">
+  <div class="page-hero__content" appScrollReveal>
+    <p class="section-label">About Us</p>
+    <h1>We fell in love with love stories</h1>
+    <p>A decade of documenting weddings across India — one real moment at a time.</p>
+  </div>
+</section>
+
+<!-- OUR STORY -->
+<section class="about-story">
+  <div class="about-story__grid">
+    <div class="about-story__image" appScrollReveal>
+      <img [src]="teamPhoto" [alt]="teamPhotoAlt" loading="lazy" />
+      <div class="about-story__image-badge">Est. 2015</div>
+    </div>
+    <div class="about-story__text" appScrollReveal [revealDelay]="150">
+      <p class="section-label">Our Story</p>
+      <h2>From a single camera to a full creative team</h2>
+      <p>
+        PickYourPic was founded in 2015 by a passionate photographer who believed that wedding photography should tell a real story — not a posed, stiff series of group shots, but the actual lived experience of the most important day in a couple's life.
+      </p>
+      <p>
+        What began as a one-person venture has grown into a close-knit creative team of photographers, videographers, and editors who share a single obsession: capturing authentic human connection.
+      </p>
+      <p>
+        Today, we have documented more than 500 weddings — from intimate 50-person celebrations in Mumbai apartments to five-day extravaganzas in Rajasthan palaces, from traditional Gujarati ceremonies to cosmopolitan destination weddings in Singapore and London.
+      </p>
+      <p>
+        We are still driven by the same belief we started with: every couple deserves photographs that make them feel the emotion of their wedding day all over again, for the rest of their lives.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="about-values">
+  <div class="about-values__header" appScrollReveal>
+    <p class="section-label">Our Philosophy</p>
+    <h2>What we believe in</h2>
+  </div>
+  <div class="values-grid">
+    @for (v of values; track v.title; let i = $index) {
+      <div class="value-card" appScrollReveal [revealDelay]="i * 80">
+        <span class="value-card__icon">{{ v.icon }}</span>
+        <h3 class="value-card__title">{{ v.title }}</h3>
+        <p class="value-card__desc">{{ v.desc }}</p>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="about-cta" appScrollReveal>
+  <h2>Ready to work together?</h2>
+  <p>Drop us a message and let's start the conversation.</p>
+  <a routerLink="/contact" class="btn-primary">Contact Us</a>
+</section>
