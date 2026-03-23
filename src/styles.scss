@@ -1,0 +1,254 @@
+/* ============================================================
+   PickYourPic — Global Theme
+   Dark & Moody: Deep Charcoal + Champagne Gold
+   ============================================================ */
+
+:root {
+  --color-bg:         #0d0d0d;
+  --color-surface:    #1a1a1a;
+  --color-surface-2:  #242424;
+  --color-gold:       #c9a84c;
+  --color-gold-light: #e8c96a;
+  --color-text:       #f0ece4;
+  --color-muted:      #8a8278;
+  --color-border:     #2e2e2e;
+  --font-heading:     'Cormorant Garamond', serif;
+  --font-script:      'Great Vibes', cursive;
+  --font-body:        'Montserrat', sans-serif;
+  --transition:       0.3s ease;
+  --radius:           4px;
+  --max-width:        1280px;
+  --section-padding:  5rem 2rem;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--color-gold);
+  text-decoration: none;
+  transition: color var(--transition);
+  &:hover { color: var(--color-gold-light); }
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul { list-style: none; }
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--font-body);
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* ---- Custom Scrollbar ---- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }
+
+/* ---- Typography ---- */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+h1 { font-size: clamp(2.4rem, 6vw, 5rem); letter-spacing: 0.03em; }
+h2 { font-size: clamp(1.8rem, 4vw, 3.2rem); letter-spacing: 0.04em; }
+h3 { font-size: clamp(1.3rem, 3vw, 2rem); }
+
+/* ---- Utility Classes ---- */
+.section-label {
+  display: inline-block;
+  font-family: var(--font-script);
+  font-size: 1.75rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--color-gold);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+/* Inline calligraphic accent for use inside headings */
+.script-accent {
+  font-family: var(--font-script);
+  font-size: 1.15em;
+  font-weight: 400;
+  color: var(--color-gold-light);
+  display: inline-block;
+  line-height: 0.9;
+  vertical-align: baseline;
+}
+
+.section-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--section-padding);
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.85rem 2.2rem;
+  background: transparent;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: background var(--transition), color var(--transition);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--color-gold);
+    color: var(--color-bg);
+  }
+}
+
+.btn-outline {
+  @extend .btn-primary;
+  border-color: var(--color-text);
+  color: var(--color-text);
+  &:hover { background: var(--color-text); color: var(--color-bg); }
+}
+
+/* ---- Scroll Reveal ---- */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+
+  &.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- Section Spacing ---- */
+section {
+  position: relative;
+}
+
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--color-gold);
+  margin: 1.5rem 0;
+}
+
+/* ---- Star Rating ---- */
+.stars {
+  display: flex;
+  gap: 3px;
+  color: var(--color-gold);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ---- Page Hero (shared across sub-pages) ---- */
+.page-hero {
+  min-height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--color-surface);
+  padding: 6rem 2rem 4rem;
+
+  &__label { margin-bottom: 0.75rem; }
+  &__title { margin-bottom: 1rem; }
+  &__sub {
+    font-size: 1rem;
+    color: var(--color-muted);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* Subtitle / lead paragraph inside any page hero */
+  p:not(.section-label) {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.125rem;
+    color: var(--color-muted);
+    max-width: 540px;
+    margin: 0.5rem auto 0;
+    line-height: 1.6;
+  }
+}
+
+/* ---- Category Badges ---- */
+.badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  margin-bottom: 0.6rem;
+}
+
+/* ---- Card hover ---- */
+.card-hover {
+  transition: transform var(--transition), box-shadow var(--transition);
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  }
+}
+
+/* ---- Overlay on image ---- */
+.img-overlay {
+  position: relative;
+  overflow: hidden;
+
+  img {
+    transition: transform 0.5s ease;
+    width: 100%;
+  }
+
+  &:hover img {
+    transform: scale(1.04);
+  }
+
+  .overlay-content {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+
+  &:hover .overlay-content { opacity: 1; }
+}
