@@ -45,6 +45,11 @@
         <div class="post-card__thumb">
           <img [src]="post.thumbnailUrl" [alt]="post.title" loading="lazy" />
           <span class="post-card__cat badge">{{ post.category }}</span>
+          <div class="img-overlay">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
         </div>
         <div class="post-card__body">
           <h3 class="post-card__title">{{ post.title }}</h3>
